@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Solar System</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="Solar System App by Khumoyun" />
+        <meta
+            name="keywords"
+            content="solarsystem,solar-system,planets,galaxy,earth,mars,jupiter,saturn,sun"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            canvas {
+                display: block;
+                opacity: 0;
+            }
+        </style>
+        <link rel="stylesheet" href="./styles/style.css" />
+        <link rel="shortcut icon" href="./res/icon.png" type="image/x-icon" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+        <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    </head>
+    <body ontouchstart="">
+        <!-- CONTROL -->
+        <div class="flex-container">
+            <div class="control-panel">
+                <h2 class="control-panel--title">Solar System</h2>
+                <hr />
+                <div class="control-panel--buttons">
+                    <button id="mercury">Mercury</button>
+                    <button id="venus">Venus</button>
+                    <button id="earth">Earth</button>
+                    <button id="mars">Mars</button>
+                    <button id="jupiter">Jupiter</button>
+                    <button id="saturn">Saturn</button>
+                    <button id="neptune">Neptune</button>
+                    <button id="all">All</button>
+                    <button id="music">Music On/Off</button>
+                </div>
+            </div>
+
+            <div class="about-panel">
+                <h2>About Planet</h2>
+                <hr />
+                <p class="about-panel--info" id="info">
+                    Select one of those planets.
+                </p>
+            </div>
+        </div>
+
+        <!-- DIALOG -->
+        <div class="dialog" id="dialog">
+            <input type="checkbox" id="toggle" checked />
+            <dialog>
+                <h2>Solar System</h2>
+                <hr />
+                <p>
+                    Hi! I'm Khumoyun, the creator of this app. Here you can
+                    explore our solar system! Press "ok" to continue.
+                </p>
+
+                <label for="toggle" id="toggleBtn">ok</label>
+            </dialog>
+        </div>
+
+        <!-- LOADING SCREEN -->
+        <div class="container">
+            <div class="header">Solar System</div>
+            <div class="me">
+                by
+                <a href="https://github.com/XumoyunSattoraliyev" target="_new"
+                    >Khumoyun</a
+                >
+            </div>
+            <span class="loader"></span>
+        </div>
+
+        <!-- STAMP -->
+        <div class="copyright">© 2023 Khumoyun. All rights reserved.</div>
+
+        <script type="module">
+            import * as THREE from "./js/three.module.js";
+            import { APP } from "./js/app.js";
+            import { VRButton } from "./js/VRButton.js";
+
+            const loaderContainer = document.querySelector(".container"),
+                flexContainer = document.querySelector(".flex-container"),
+                toggleBtn = document.getElementById("toggleBtn"),
+                dialog = document.getElementById("dialog"),
+                bgAudio = new Audio("./res/bg-audio.mp3"),
+                music = document.getElementById("music"),
+                clickSound = new Audio("./res/button-3.wav");
+
+            let audioLoaded = false,
+                interval;
+
+            clickSound.volume = 0.15;
+            bgAudio.loop = true;
+            bgAudio.volume = 0.25;
+            bgAudio.addEventListener("loadeddata", () => (audioLoaded = true));
+
+            window.THREE = THREE; // Used by APP Scripts.
+            window.VRButton = VRButton; // Used by APP Scripts.
+
+            var loader = new THREE.FileLoader();
+
+            function loadScene(text) {
+                if (!audioLoaded) return;
+
+                clearInterval(interval);
+
+                var player = new APP.Player();
+                player.load(JSON.parse(text));
+                player.setSize(window.innerWidth, window.innerHeight);
+                player.play();
+
+                document.body.appendChild(player.dom);
+
+                gsap.to(loaderContainer, {
+                    opacity: 0.8,
+                    duration: 6,
+                    ease: "ease-in",
+                    onComplete() {
+                        loaderContainer.style.display = "none";
+                        gsap.to(dialog, { opacity: 1 });
+                    },
+                });
+
+                gsap.to(player.dom.querySelector("canvas"), {
+                    opacity: 1,
+                    duration: 0.9,
+                });
+
+                music.addEventListener("click", () =>
+                    bgAudio.paused ? bgAudio.play() : bgAudio.pause()
+                );
+
+                toggleBtn.addEventListener("click", () => {
+                    bgAudio.play();
+                    gsap.to(dialog, {
+                        opacity: 0,
+                        onComplete() {
+                            dialog.style.display = "none";
+                            gsap.to(flexContainer, {
+                                opacity: 1,
+                                onComplete() {
+                                    const typeWriter = new Typewriter("#info", {
+                                        strings: [
+                                            "Please select one of these planets.",
+                                        ],
+                                        autoStart: true,
+                                        delay: 50,
+                                        deleteSpeed: 5,
+                                    });
+                                },
+                            });
+                        },
+                    });
+                });
+                window.addEventListener("resize", function () {
+                    player.setSize(window.innerWidth, window.innerHeight);
+                });
+            }
+
+            loader.load("app.json", function (text) {
+                interval = setInterval(() => loadScene(text), 1000);
+            });
+
+            document.body.addEventListener("click", () => clickSound.play());
+        </script>
+    </body>
+</html>
