@@ -51,7 +51,7 @@ var APP = {
 				autoStart: true,
 				delay: 50,
 				deleteSpeed: 5,
-			});
+			}).pauseFor(30000);
 			currentPlanet = _planetName;
 		};
 
