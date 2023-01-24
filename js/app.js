@@ -50,7 +50,7 @@ var APP = {
 				autoStart: true,
 				delay: 50,
 				deleteSpeed: 5,
-			}).pauseFor(30000).typeString("Please select one of these planets");
+			});
 			currentPlanet = _planetName;
 		};
 
