@@ -43,14 +43,14 @@ var APP = {
 
 		const planetInfo = function (_planetName) {
 			infoEl.innerHTML = "";
-			new Typewriter("#info", {
-				strings: [
-					data[_planetName || ""],
-				],
+			const tpr = new Typewriter("#info", {
 				autoStart: true,
 				delay: 50,
 				deleteSpeed: 5,
 			});
+			
+			tpr.typeString(data[_planetName || ""]).waitFor(100000);
+			
 			currentPlanet = _planetName;
 		};
 
