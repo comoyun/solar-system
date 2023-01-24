@@ -49,7 +49,7 @@ var APP = {
 				deleteSpeed: 5,
 			});
 			
-			tpr.typeString(data[_planetName || ""]).waitFor(100000);
+			tpr.typeString(data[_planetName || ""]).start();
 			
 			currentPlanet = _planetName;
 		};
