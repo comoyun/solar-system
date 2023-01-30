@@ -1,8 +1,7 @@
 # Solar-system 🪐
-On the web-site, you can explore and learn about the planets in our solar system in a fun and interactive way.
+On the web-site, you can explore and learn about the planets in our solar system in a **fun** and **interactive** way.
 [View live](https://solar-system-app-3d.netlify.app) ✅
 
-# Screenshots 🖼
 <table border="0">
  <tr>
     <td><img width="1604" src="https://user-images.githubusercontent.com/87017227/215339027-9f0c1aff-2712-4e8c-9262-b7525a5b5839.png"></td>
