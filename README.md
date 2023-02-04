@@ -12,3 +12,4 @@ you can explore and learn about the planets in our solar system in a **fun** and
     <td>About Planet</td>
  </tr>
 </table>
+ 
