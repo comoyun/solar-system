@@ -9,7 +9,7 @@ you can explore and learn about our solar system in a **fun** and **interactive*
  </tr>
  <tr>
     <td>Splash Screen</td>
-    <td>About Planet</td>
+    <td>Planet Info</td>
  </tr>
 </table>
  
