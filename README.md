@@ -1,5 +1,5 @@
 # Solar-system 🪐
-you can explore and learn about the planets in our solar system in a **fun** and **interactive** way.
+you can explore and learn about our solar system in a **fun** and **interactive** way.
 [View live](https://solar-system-app-3d.netlify.app) ✅
 
 <table border="0">
