@@ -1,8 +1,10 @@
+/* Font Face */
 @font-face {
     font-family: smonkey;
     src: url("../res/space-monkey.otf");
 }
 
+/* Scrollbar Styles */
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -17,6 +19,7 @@
     border-radius: 10px;
 }
 
+/* Base Styles */
 html,
 body {
     background: linear-gradient(to top right, #133, #122);
@@ -27,6 +30,7 @@ body {
     font-family: "Orbitron", sans-serif;
 }
 
+/* Container */
 .container {
     position: absolute;
     top: 0;
@@ -40,6 +44,7 @@ body {
     z-index: 99;
 }
 
+/* Header */
 .header {
     font-family: smonkey, sans-serif;
     font-size: 2.3rem;
@@ -47,18 +52,21 @@ body {
     text-align: center;
 }
 
+/* Links */
 a,
 a:focus,
 a:hover {
     color: #0ee;
 }
 
+/* Me */
 .me {
     font-family: smonkey, sans-serif;
     font-size: 17px;
     color: #0ee;
 }
 
+/* Loader */
 .loader {
     position: absolute;
     right: 30px;
@@ -86,6 +94,7 @@ a:hover {
     border-radius: 50%;
 }
 
+/* Flex Container */
 .flex-container {
     position: absolute;
     top: 0;
@@ -103,18 +112,14 @@ a:hover {
     display: none;
 }
 
+/* Horizontal Rule */
 hr {
     border-color: #0ee;
     margin: 0.9em 0;
 }
 
-.control-panel {
-    border: 2px solid #0ee;
-    box-shadow: 1px 2px 4px rgba(12, 222, 222, 0.518);
-    width: 300px;
-    padding: 0.6em 0.7em;
-}
-
+/* Panels */
+.control-panel,
 .about-panel {
     border: 2px solid #0ee;
     box-shadow: 1px 2px 4px rgba(12, 222, 222, 0.518);
@@ -122,6 +127,7 @@ hr {
     padding: 0.6em 0.7em;
 }
 
+/* About Panel Info */
 .about-panel--info {
     line-height: 24px;
     letter-spacing: 1.3px;
@@ -132,6 +138,7 @@ hr {
     scroll-behavior: smooth;
 }
 
+/* Control Panel Buttons */
 .control-panel--buttons {
     display: flex;
     flex-direction: column;
@@ -164,6 +171,7 @@ hr {
     background-position: left bottom;
 }
 
+/* Copyright */
 .copyright {
     position: fixed;
     bottom: 10px;
@@ -171,6 +179,7 @@ hr {
     font-size: 10px;
 }
 
+/* Toggle */
 #toggle {
     visibility: hidden;
     opacity: 0;
@@ -182,6 +191,7 @@ hr {
     display: block;
 }
 
+/* Label */
 label {
     background: transparent;
     border: 2px solid #0ee;
@@ -194,6 +204,7 @@ label {
     margin-left: auto;
 }
 
+/* Dialog */
 .dialog {
     position: fixed;
     width: 100%;
@@ -221,6 +232,7 @@ dialog p {
     margin-bottom: 1em;
 }
 
+/* Keyframes */
 @keyframes appear {
     0% {
         opacity: 0;
@@ -237,6 +249,7 @@ dialog p {
     }
 }
 
+/* Media Queries */
 @media screen and (max-width: 850px) {
     .flex-container {
         flex-direction: column;
