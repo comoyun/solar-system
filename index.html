@@ -4,40 +4,30 @@
         <title>Solar System</title>
         <meta charset="utf-8" />
         <meta name="description" content="Solar System 3D project by Khumoyun" />
-        <meta
-            name="keywords"
-            content="solarsystem,solar-system,planets,galaxy,earth,mars,jupiter,saturn,sun"
-        />
+        <meta name="keywords" content="solar system, planets, galaxy, earth, mars, jupiter, saturn, sun" />
         <meta name="theme-color" content="#1bb" />
-        <meta
-            name="viewport"
-            content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-        />
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
-            rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="./styles/style.css" />
+        <link rel="shortcut icon" href="./res/icon.png" type="image/x-icon" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+        <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
         <style>
             * {
                 box-sizing: border-box;
                 margin: 0;
                 padding: 0;
             }
-
             canvas {
                 display: block;
                 opacity: 0;
             }
         </style>
-        <link rel="stylesheet" href="./styles/style.css" />
-        <link rel="shortcut icon" href="./res/icon.png" type="image/x-icon" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-        <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     </head>
     <body ontouchstart="">
-        <!-- CONTROL -->
+        <!-- CONTROL PANEL -->
         <div class="flex-container">
             <div class="control-panel">
                 <h2 class="control-panel--title">Solar System</h2>
@@ -54,13 +44,10 @@
                     <button id="music">Music On/Off</button>
                 </div>
             </div>
-
             <div class="about-panel">
                 <h2>About Planet</h2>
                 <hr />
-                <p class="about-panel--info" id="info">
-                    Select one of those planets.
-                </p>
+                <p class="about-panel--info" id="info">Select one of the planets.</p>
             </div>
         </div>
 
@@ -71,11 +58,9 @@
                 <h2>Solar System</h2>
                 <hr />
                 <p>
-                    Hi! I'm Khumoyun. Here you can
-                    explore our solar system! Press "ok" to continue.
+                    Hi! I'm Khumoyun. Here you can explore our solar system! Press "OK" to continue.
                 </p>
-
-                <label for="toggle" id="toggleBtn">ok</label>
+                <label for="toggle" id="toggleBtn">OK</label>
             </dialog>
         </div>
 
@@ -84,16 +69,15 @@
             <div class="header">Solar System</div>
             <div class="me">
                 by
-                <a href="https://github.com/comoyun" target="_new"
-                    >Khumoyun</a
-                >
+                <a href="https://github.com/comoyun" target="_blank">Khumoyun</a>
             </div>
             <span class="loader"></span>
         </div>
 
-        <!-- STAMP -->
+        <!-- COPYRIGHT -->
         <div class="copyright">© Khumoyun, 2023</div>
 
+        <!-- SCRIPTS -->
         <script type="module">
             import * as THREE from "./js/three.module.js";
             import { APP } from "./js/app.js";
@@ -161,9 +145,7 @@
                                 opacity: 1,
                                 onComplete() {
                                     const typeWriter = new Typewriter("#info", {
-                                        strings: [
-                                            "Please select one of these planets.",
-                                        ],
+                                        strings: ["Please select one of these planets."],
                                         autoStart: true,
                                         delay: 50,
                                         deleteSpeed: 5,
@@ -173,6 +155,7 @@
                         },
                     });
                 });
+
                 window.addEventListener("resize", function () {
                     player.setSize(window.innerWidth, window.innerHeight);
                 });
